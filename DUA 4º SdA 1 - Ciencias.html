@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exploradores del Cosmos - Conocimiento del Medio DUA (Orden 30/05/2023)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter & Comic Neue for accessibility -->
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+        .dyslexic-font {
+            font-family: 'Comic Neue', cursive, sans-serif !important;
+            letter-spacing: 0.08em;
+            word-spacing: 0.16em;
+            line-height: 1.7;
+        }
+        .space-card {
+            background: rgba(30, 41, 59, 0.88);
+            backdrop-filter: blur(14px);
+            border: 2px solid rgba(56, 189, 248, 0.35);
+            box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.6);
+        }
+        .space-card-active {
+            border-color: #38bdf8;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+        }
+        @keyframes pulse-glow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.5)); }
+            50% { filter: drop-shadow(0 0 22px rgba(56, 189, 248, 0.9)); }
+        }
+        .glow-effect {
+            animation: pulse-glow 3s infinite ease-in-out;
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #38bdf8;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body class="selection:bg-cyan-500 selection:text-white pb-16">
+
+    <!-- Accessibility Control Bar (DUA) -->
+    <header class="bg-slate-900/95 border-b border-cyan-500/40 sticky top-0 z-50 px-4 py-3 shadow-lg">
+        <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center space-x-3">
+                <div class="bg-cyan-400 text-slate-950 p-2.5 rounded-2xl font-black text-xl shadow-md glow-effect">
+                    <i class="fa-solid fa-rocket"></i>
+                </div>
+                <div>
+                    <h1 class="text-base md:text-xl font-black tracking-wide text-cyan-300">EXPLORADORES DEL COSMOS DUA</h1>
+                    <p class="text-xs text-slate-400">Orden de 30 de mayo de 2023 • 4º EP Andalucía</p>
+                </div>
+            </div>
+
+            <!-- Author & DUA Control Panel -->
+            <div class="flex flex-col sm:flex-row items-end sm:items-center space-y-1 sm:space-y-0 space-x-0 sm:space-x-3">
+                <div class="text-[11px] sm:text-xs text-cyan-200/90 bg-cyan-950/80 border border-cyan-500/30 px-3 py-1.5 rounded-xl font-medium shadow-inner text-right">
+                    <i class="fa-solid fa-code text-cyan-400 mr-1"></i>
+                    Aplicación creada por: <strong class="text-white font-bold">Carlos H. González Ortega (profesaurio)</strong>
+                </div>
+                
+                <div class="flex items-center space-x-2 sm:space-x-2 pt-1 sm:pt-0">
+                    <button onclick="toggleAudioReader()" id="btnAudio" class="flex items-center space-x-2 bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-1.5 rounded-xl text-xs font-bold transition shadow border border-indigo-400/40">
+                        <i class="fa-solid fa-volume-high text-sm" id="audioIcon"></i>
+                        <span id="audioStatusText" class="hidden md:inline">Voz: Activada</span>
+                    </button>
+                    <button onclick="toggleDyslexiaFont()" id="btnFont" class="flex items-center space-x-2 bg-slate-800 hover:bg-slate-700 text-cyan-300 px-3 py-1.5 rounded-xl text-xs font-bold transition border border-cyan-500/30">
+                        <i class="fa-solid fa-font text-sm"></i>
+                        <span class="hidden md:inline">Fuente DUA Lectura</span>
+                    </button>
+                    <button onclick="openTeacherModal()" class="flex items-center space-x-2 bg-amber-600 hover:bg-amber-500 text-white px-3 py-1.5 rounded-xl text-xs font-bold transition shadow border border-amber-400/40">
+                        <i class="fa-solid fa-file-contract text-sm"></i>
+                        <span class="hidden md:inline">Informe Oficial Docente</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 mt-6">
+
+        <!-- Welcome & Avatar Selector -->
+        <section id="welcomeSection" class="space-card rounded-3xl p-6 md:p-8 mb-8 text-center relative overflow-hidden">
+            <div class="absolute -right-12 -bottom-12 w-56 h-56 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="inline-flex items-center space-x-2 bg-cyan-500/20 text-cyan-300 px-4 py-1.5 rounded-full text-xs md:text-sm font-bold border border-cyan-500/40 mb-4">
+                <i class="fa-solid fa-landmark"></i>
+                <span>Adaptado a la Normativa de Andalucía (Orden 30 de mayo de 2023)</span>
+            </div>
+
+            <h2 class="text-2xl md:text-4xl font-black text-white mb-3 cursor-pointer" onclick="speakText('¡Hola Explorador Espacial! Elige tu personaje para comenzar tu aventura por el universo.')">
+                ¡Hola, Explorador Espacial! 🚀 <i class="fa-solid fa-volume-high text-cyan-400 text-lg ml-2" title="Escuchar"></i>
+            </h2>
+            <p class="text-slate-300 text-sm md:text-base max-w-2xl mx-auto mb-6">
+                Selecciona tu avatar espacial favorito para empezar a resolver los retos con 7 actividades visuales por cada tema:
+            </p>
+
+            <!-- Avatars Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto mb-8">
+                <button onclick="selectAvatar('👩‍🚀', 'Capitana Estrella')" class="avatar-card p-5 rounded-2xl bg-slate-800/80 hover:bg-cyan-950/80 border-2 border-slate-700 hover:border-cyan-400 transition flex flex-col items-center group">
+                    <span class="text-5xl mb-3 transform group-hover:scale-110 transition">👩‍🚀</span>
+                    <span class="font-bold text-white text-base">Capitana Estrella</span>
+                    <span class="text-xs text-cyan-300 mt-1">Guía espacial</span>
+                </button>
+                <button onclick="selectAvatar('🤖', 'Astro-Robo 3000')" class="avatar-card p-5 rounded-2xl bg-slate-800/80 hover:bg-cyan-950/80 border-2 border-slate-700 hover:border-cyan-400 transition flex flex-col items-center group">
+                    <span class="text-5xl mb-3 transform group-hover:scale-110 transition">🤖</span>
+                    <span class="font-bold text-white text-base">Astro-Robo 3000</span>
+                    <span class="text-xs text-cyan-300 mt-1">Especialista científico</span>
+                </button>
+                <button onclick="selectAvatar('👽', 'Alien Amigo')" class="avatar-card p-5 rounded-2xl bg-slate-800/80 hover:bg-cyan-950/80 border-2 border-slate-700 hover:border-cyan-400 transition flex flex-col items-center group">
+                    <span class="text-5xl mb-3 transform group-hover:scale-110 transition">👽</span>
+                    <span class="font-bold text-white text-base">Alien Amigo</span>
+                    <span class="text-xs text-cyan-300 mt-1">Navegante galáctico</span>
+                </button>
+            </div>
+
+            <div id="selectedAvatarAlert" class="hidden text-cyan-300 font-semibold mb-6 bg-cyan-950/70 py-2.5 px-5 rounded-2xl inline-block border border-cyan-500/40">
+                Avatar seleccionado: <span id="avatarNameDisplay" class="font-black text-white ml-1"></span>
+            </div>
+
+            <div>
+                <button onclick="startMission()" id="startBtn" disabled class="opacity-50 cursor-not-allowed bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-slate-950 font-black px-10 py-4 rounded-2xl text-lg shadow-xl transition transform hover:scale-105">
+                    <i class="fa-solid fa-play mr-2"></i> ¡INICIAR MISIÓN CÓSMICA!
+                </button>
+            </div>
+        </section>
+
+        <!-- Mission Dashboard -->
+        <div id="gameDashboard" class="hidden space-y-6">
+            
+            <!-- Dashboard Progress Bar -->
+            <div class="space-card rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center space-x-3">
+                    <div id="currentAvatarDisplay" class="text-3xl bg-slate-800 p-2.5 rounded-2xl border border-cyan-500/40">👩‍🚀</div>
+                    <div>
+                        <div class="text-xs text-slate-400 font-semibold">Comandante Activo</div>
+                        <div id="playerNameDisplay" class="text-cyan-300 font-bold">Capitana Estrella</div>
+                    </div>
+                </div>
+                
+                <div class="flex-1 max-w-md">
+                    <div class="flex justify-between text-xs font-bold mb-1.5 text-slate-300">
+                        <span>Progreso de Actividades (35 totales)</span>
+                        <span id="progressText">0 / 35 Completadas</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-4 rounded-full overflow-hidden border border-cyan-500/30">
+                        <div id="progressBar" class="bg-gradient-to-r from-cyan-400 to-emerald-400 h-full w-0 transition-all duration-500"></div>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-2 bg-amber-500/10 border border-amber-500/40 px-4 py-2 rounded-2xl">
+                    <i class="fa-solid fa-star text-amber-400 text-2xl animate-pulse"></i>
+                    <span id="starsCount" class="font-black text-amber-300 text-xl">0</span>
+                    <span class="text-xs text-amber-400 font-bold">Insignias</span>
+                </div>
+            </div>
+
+            <!-- 5 Curriculum Missions Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                
+                <!-- Mission 1 Card -->
+                <div class="space-card rounded-3xl p-5 flex flex-col justify-between border-2 border-cyan-500/30 hover:border-cyan-400 transition group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-cyan-500/20 text-cyan-300 px-3 py-1 rounded-bl-2xl text-xs font-bold border-l border-b border-cyan-500/30">
+                        CE 1.1 - 1.2 • CON.2.A.1
+                    </div>
+                    <div>
+                        <div class="w-16 h-16 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-3xl mb-4 border border-cyan-500/30 group-hover:scale-110 transition">
+                            ☀️🌍🌕
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-1">1. Sol, Tierra y Luna</h3>
+                        <p class="text-xs text-slate-300 mb-4">
+                            Batería de 7 retos visuales para identificar el Sol, la Tierra y la Luna.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-700/60">
+                        <span id="statusM1" class="text-xs font-bold text-amber-400 bg-amber-400/10 px-2.5 py-1 rounded-lg">
+                            <i class="fa-solid fa-clock"></i> 0/7 Retos
+                        </span>
+                        <button onclick="openMission(1)" class="bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-black px-4 py-2 rounded-xl text-sm transition shadow">
+                            Misión 1 <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mission 2 Card -->
+                <div class="space-card rounded-3xl p-5 flex flex-col justify-between border-2 border-cyan-500/30 hover:border-cyan-400 transition group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-cyan-500/20 text-cyan-300 px-3 py-1 rounded-bl-2xl text-xs font-bold border-l border-b border-cyan-500/30">
+                        CE 2.1 • CON.2.A.2
+                    </div>
+                    <div>
+                        <div class="w-16 h-16 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-3xl mb-4 border border-cyan-500/30 group-hover:scale-110 transition">
+                            🔄☀️🌙
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-1">2. Rotación: Día y Noche</h3>
+                        <p class="text-xs text-slate-300 mb-4">
+                            Batería de 7 retos sobre el giro de la Tierra y la alternancia del día y la noche.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-700/60">
+                        <span id="statusM2" class="text-xs font-bold text-amber-400 bg-amber-400/10 px-2.5 py-1 rounded-lg">
+                            <i class="fa-solid fa-clock"></i> 0/7 Retos
+                        </span>
+                        <button onclick="openMission(2)" class="bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-black px-4 py-2 rounded-xl text-sm transition shadow">
+                            Misión 2 <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mission 3 Card -->
+                <div class="space-card rounded-3xl p-5 flex flex-col justify-between border-2 border-cyan-500/30 hover:border-cyan-400 transition group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-cyan-500/20 text-cyan-300 px-3 py-1 rounded-bl-2xl text-xs font-bold border-l border-b border-cyan-500/30">
+                        CE 2.2 • CON.2.A.3
+                    </div>
+                    <div>
+                        <div class="w-16 h-16 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-3xl mb-4 border border-cyan-500/30 group-hover:scale-110 transition">
+                            🍂❄️🌸☀️
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-1">3. Traslación: 4 Estaciones</h3>
+                        <p class="text-xs text-slate-300 mb-4">
+                            Batería de 7 actividades sobre el viaje solar y el cambio de las 4 estaciones.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-700/60">
+                        <span id="statusM3" class="text-xs font-bold text-amber-400 bg-amber-400/10 px-2.5 py-1 rounded-lg">
+                            <i class="fa-solid fa-clock"></i> 0/7 Retos
+                        </span>
+                        <button onclick="openMission(3)" class="bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-black px-4 py-2 rounded-xl text-sm transition shadow">
+                            Misión 3 <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mission 4 Card -->
+                <div class="space-card rounded-3xl p-5 flex flex-col justify-between border-2 border-cyan-500/30 hover:border-cyan-400 transition group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-cyan-500/20 text-cyan-300 px-3 py-1 rounded-bl-2xl text-xs font-bold border-l border-b border-cyan-500/30">
+                        CE 1.1 - 1.2 • CON.2.A.1
+                    </div>
+                    <div>
+                        <div class="w-16 h-16 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-3xl mb-4 border border-cyan-500/30 group-hover:scale-110 transition">
+                            🪐🌍🔴
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-1">4. Sistema Solar y Planetas</h3>
+                        <p class="text-xs text-slate-300 mb-4">
+                            Batería de 7 ejercicios sobre características y orden de los planetas.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-700/60">
+                        <span id="statusM4" class="text-xs font-bold text-amber-400 bg-amber-400/10 px-2.5 py-1 rounded-lg">
+                            <i class="fa-solid fa-clock"></i> 0/7 Retos
+                        </span>
+                        <button onclick="openMission(4)" class="bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-black px-4 py-2 rounded-xl text-sm transition shadow">
+                            Misión 4 <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mission 5 Card -->
+                <div class="space-card rounded-3xl p-5 flex flex-col justify-between border-2 border-cyan-500/30 hover:border-cyan-400 transition group relative overflow-hidden md:col-span-2 lg:col-span-1">
+                    <div class="absolute top-0 right-0 bg-cyan-500/20 text-cyan-300 px-3 py-1 rounded-bl-2xl text-xs font-bold border-l border-b border-cyan-500/30">
+                        CE 6.1 • CON.2.A.4
+                    </div>
+                    <div>
+                        <div class="w-16 h-16 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-3xl mb-4 border border-cyan-500/30 group-hover:scale-110 transition">
+                            🎨🟡🔵⚪
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-1">5. Taller Plastilina 3D</h3>
+                        <p class="text-xs text-slate-300 mb-4">
+                            Proyecto manipulativo evaluable de 7 pasos para moldear Sol, Tierra y Luna.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-700/60">
+                        <span id="statusM5" class="text-xs font-bold text-amber-400 bg-amber-400/10 px-2.5 py-1 rounded-lg">
+                            <i class="fa-solid fa-clock"></i> 0/7 Pasos
+                        </span>
+                        <button onclick="openMission(5)" class="bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-black px-4 py-2 rounded-xl text-sm transition shadow">
+                            Misión 5 <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Final Evaluation Banner (Unlocked upon completing all 35 activities) -->
+            <div id="finalBanner" class="hidden space-card rounded-3xl p-6 border-2 border-emerald-500 bg-emerald-950/30 text-center space-y-4">
+                <div class="inline-block bg-emerald-500 text-slate-950 px-4 py-1.5 rounded-full font-black text-sm">
+                    <i class="fa-solid fa-trophy mr-1"></i> ¡TODAS LAS 35 ACTIVIDADES SUPERADAS!
+                </div>
+                <h3 class="text-2xl font-black text-white">
+                    ¡Has superado con éxito el programa curricular adaptado de Conocimiento del Medio! 🌟
+                </h3>
+                <p class="text-slate-300 text-sm max-w-xl mx-auto">
+                    Se han registrado los 5 Criterios de Evaluación oficiales de la Orden de 30 de mayo de 2023 de la Junta de Andalucía. Puedes consultar e imprimir el informe técnico evaluativo.
+                </p>
+                <div>
+                    <button onclick="openTeacherModal()" class="bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-black px-8 py-4 rounded-2xl text-base shadow-xl transition transform hover:scale-105">
+                        <i class="fa-solid fa-file-contract mr-2"></i> VER INFORME OFICIAL COMPLETO
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- GAME MODAL CONTAINER -->
+    <div id="gameModal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="space-card rounded-3xl max-w-2xl w-full p-6 md:p-8 relative border-2 border-cyan-400 shadow-2xl my-8">
+            
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-700">
+                <div class="flex items-center space-x-3">
+                    <span id="modalMissionIcon" class="text-3xl">🚀</span>
+                    <div>
+                        <span id="modalMissionTag" class="text-xs text-cyan-400 font-bold uppercase tracking-wider block">Criterio de Evaluación</span>
+                        <h3 id="modalMissionTitle" class="text-lg md:text-xl font-black text-white">Título de la Misión</h3>
+                    </div>
+                </div>
+                <button onclick="closeMissionModal()" class="text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 w-10 h-10 rounded-full flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Activity Counter Bar -->
+            <div class="flex items-center justify-between mb-3 bg-slate-900/90 px-4 py-2 rounded-xl border border-slate-700">
+                <span id="questionProgressText" class="text-xs font-bold text-cyan-300">Reto 1 de 7</span>
+                <div class="w-32 bg-slate-800 h-2 rounded-full overflow-hidden border border-slate-700">
+                    <div id="modalQuestionBar" class="bg-cyan-400 h-full w-0 transition-all duration-300"></div>
+                </div>
+            </div>
+
+            <!-- Speech button inside modal -->
+            <div class="mb-4 flex items-center justify-between bg-slate-800/80 p-3.5 rounded-2xl border border-slate-700">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-bullhorn text-cyan-400 text-lg"></i>
+                    <span id="modalInstructionText" class="text-xs md:text-sm text-cyan-100 font-medium">Instrucción DUA de la actividad...</span>
+                </div>
+                <button onclick="speakCurrentInstruction()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 shadow shrink-0">
+                    <i class="fa-solid fa-volume-high"></i>
+                    <span class="hidden sm:inline">Escuchar</span>
+                </button>
+            </div>
+
+            <!-- Modal Body Content -->
+            <div id="modalMissionContent" class="space-y-4 my-4">
+                <!-- Injected via JS -->
+            </div>
+
+            <!-- Feedback Area -->
+            <div id="modalFeedback" class="hidden mt-4 p-4 rounded-2xl text-xs md:text-sm font-bold flex items-center space-x-3 transition">
+                <!-- Injected feedback message -->
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="flex justify-between items-center pt-4 border-t border-slate-700 mt-6">
+                <button onclick="closeMissionModal()" class="text-slate-400 hover:text-white text-xs font-bold">
+                    <i class="fa-solid fa-arrow-left mr-1"></i> Volver al Menú
+                </button>
+                <button id="nextQuestionBtn" onclick="nextQuestionInMission()" class="hidden bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-black px-6 py-3 rounded-xl transition shadow">
+                    Siguiente Reto <i class="fa-solid fa-arrow-right ml-1"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- OFFICIAL ANDALUSIAN TEACHER REPORT MODAL -->
+    <div id="teacherModal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="space-card rounded-3xl max-w-4xl w-full p-6 md:p-8 relative border-2 border-amber-500 shadow-2xl my-8">
+            
+            <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-700">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-amber-500 text-slate-950 p-3 rounded-2xl text-2xl font-black">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs text-amber-400 font-bold uppercase tracking-wide">Informe Psicopedagógico Curricular DUA</span>
+                        <h3 class="text-lg md:text-xl font-black text-white">Evaluación de Criterios • Orden de 30 de mayo de 2023 (Andalucía)</h3>
+                    </div>
+                </div>
+                <button onclick="closeTeacherModal()" class="text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 w-10 h-10 rounded-full flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Context Info Header -->
+            <div class="bg-slate-900/90 p-4 rounded-2xl border border-slate-700 mb-6 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs md:text-sm">
+                <div>
+                    <span class="text-slate-400 block text-xs">Alumno/a Evaluado:</span>
+                    <strong id="reportStudentName" class="text-cyan-300 text-sm md:text-base">Capitana Estrella</strong>
+                </div>
+                <div>
+                    <span class="text-slate-400 block text-xs">Nivel y Adaptación:</span>
+                    <strong class="text-white">4º EP (Andalucía) • Adaptación DUA (>2 cursos desfase)</strong>
+                </div>
+                <div>
+                    <span class="text-slate-400 block text-xs">Aciertos Totales:</span>
+                    <strong id="reportScore" class="text-amber-300 text-sm md:text-base">0 / 35 Actividades Superadas</strong>
+                </div>
+            </div>
+
+            <!-- Official Curriculum Alignment Table -->
+            <div class="overflow-x-auto mb-6">
+                <table class="w-full text-left text-xs border-collapse">
+                    <thead>
+                        <tr class="bg-slate-800 text-cyan-300 border-b border-slate-700">
+                            <th class="p-3">Área y Criterio (Orden 30/05/2023)</th>
+                            <th class="p-3">Saber Básico</th>
+                            <th class="p-3 text-center">Retos Completados</th>
+                            <th class="p-3 text-center">% Éxito</th>
+                            <th class="p-3 text-center">Estado Mínimos</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reportTableBody" class="divide-y divide-slate-800 text-slate-300">
+                        <!-- Injected via JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pedagogical Evaluation Synthesis -->
+            <div id="pedagogicalConclusion" class="p-4 rounded-2xl border text-xs md:text-sm leading-relaxed mb-6">
+                <!-- Injected via JS -->
+            </div>
+
+            <!-- Footer Action Buttons -->
+            <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-700">
+                <button onclick="resetProgress()" class="bg-red-500/20 hover:bg-red-500/30 text-red-300 border border-red-500/40 px-4 py-2.5 rounded-xl text-xs font-bold transition">
+                    <i class="fa-solid fa-rotate-right mr-1.5"></i> Reiniciar Evaluación
+                </button>
+                <div class="flex space-x-3">
+                    <button onclick="window.print()" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-5 py-2.5 rounded-xl text-xs font-black transition flex items-center shadow">
+                        <i class="fa-solid fa-print mr-2"></i> Imprimir Informe Técnico (PDF)
+                    </button>
+                    <button onclick="closeTeacherModal()" class="bg-slate-800 hover:bg-slate-700 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition">
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // State Management
+        let state = {
+            avatar: '👩‍🚀',
+            avatarName: 'Capitana Estrella',
+            dyslexiaMode: false,
+            audioEnabled: true,
+            // Stores score (0-7) per mission
+            missionScores: [0, 0, 0, 0, 0],
+            // Tracks active question index inside current mission (0-6)
+            currentQuestionIdx: 0,
+            activeMissionId: null,
+            stars: 0
+        };
+
+        // Bank of 7 activities for each of the 5 curriculum missions (35 total)
+        const curriculumMissions = [
+            {
+                id: 1,
+                title: "1. Sol, Tierra y Luna",
+                ce: "Competencia Específica 1",
+                criterio: "Criterio 1.1 / 1.2",
+                criterioText: "Reconocer y describir las características principales del Sol, la Tierra y la Luna.",
+                saber: "CON.2.A.1",
+                saberText: "El espacio y la Tierra: astros del Sistema Solar, relaciones Sol-Tierra-Luna.",
+                questions: [
+                    {
+                        instruction: "Toca la gran **ESTRELLA** que nos da luz y calor en el centro del Sistema Solar:",
+                        options: [
+                            { name: "El Sol", icon: "☀️", correct: true, desc: "¡Correcto! El Sol es la estrella gigante de luz y calor." },
+                            { name: "La Tierra", icon: "🌍", correct: false, desc: "La Tierra es el planeta donde vivimos, no una estrella." },
+                            { name: "La Luna", icon: "🌙", correct: false, desc: "La Luna es nuestro satélite rocoso." }
+                        ]
+                    },
+                    {
+                        instruction: "Selecciona el **PLANETA** donde hay agua, aire y vivimos nosotros:",
+                        options: [
+                            { name: "La Luna", icon: "🌕", correct: false, desc: "En la Luna no hay atmósfera ni mar como en la Tierra." },
+                            { name: "La Tierra", icon: "🌍", correct: true, desc: "¡Perfecto! La Tierra es el planeta azul con vida." },
+                            { name: "El Sol", icon: "☀️", correct: false, desc: "El Sol es demasiado caliente para vivir." }
+                        ]
+                    },
+                    {
+                        instruction: "Selecciona el **SATÉLITE** rocoso que gira alrededor de la Tierra:",
+                        options: [
+                            { name: "El Sol", icon: "☀️", correct: false, desc: "El Sol no gira alrededor de la Tierra." },
+                            { name: "Un Cometa", icon: "☄️", correct: false, desc: "Un cometa cruza el espacio, pero no es nuestro satélite." },
+                            { name: "La Luna", icon: "🌙", correct: true, desc: "¡Bien hecho! La Luna es el satélite natural de la Tierra." }
+                        ]
+                    },
+                    {
+                        instruction: "¿Qué astro brilla de noche porque refleja la luz del Sol?",
+                        options: [
+                            { name: "La Luna", icon: "🌙", correct: true, desc: "¡Muy bien! La Luna no tiene luz propia, refleja la del Sol." },
+                            { name: "La Tierra", icon: "🌍", correct: false, desc: "La Tierra no es el astro que vemos brillar en el cielo nocturno." },
+                            { name: "Una Nube", icon: "☁️", correct: false, desc: "Las nubes están en nuestra atmósfera." }
+                        ]
+                    },
+                    {
+                        instruction: "¿Cuál de los tres astros es el **MÁS GRANDE** de todos?",
+                        options: [
+                            { name: "La Luna", icon: "🌙", correct: false, desc: "La Luna es el más pequeño de los tres." },
+                            { name: "El Sol", icon: "☀️", correct: true, desc: "¡Excelente! El Sol es gigantesco comparado con la Tierra y la Luna." },
+                            { name: "La Tierra", icon: "🌍", correct: false, desc: "La Tierra es grande, pero el Sol es muchísimo mayor." }
+                        ]
+                    },
+                    {
+                        instruction: "¿Qué astro gira alrededor de la Tierra?",
+                        options: [
+                            { name: "La Luna", icon: "🌕", correct: true, desc: "¡Correcto! La Luna tarda casi un mes en dar la vuelta a la Tierra." },
+                            { name: "El Sol", icon: "☀️", correct: false, desc: "Es la Tierra la que gira alrededor del Sol." },
+                            { name: "Marte", icon: "🔴", correct: false, desc: "Marte es otro planeta independiente." }
+                        ]
+                    },
+                    {
+                        instruction: "¿De dónde proviene la luz que calienta nuestro planeta Tierra?",
+                        options: [
+                            { name: "De las Estrellas lejanas", icon: "✨", correct: false, desc: "Están muy lejos para calentarnos." },
+                            { name: "Del Sol", icon: "☀️", correct: true, desc: "¡Genial! El Sol nos da la energía necesaria para la vida." },
+                            { name: "De la Luna", icon: "🌙", correct: false, desc: "La Luna solo refleja un poco de luz solar." }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 2,
+                title: "2. Rotación: Día y Noche",
+                ce: "Competencia Específica 2",
+                criterio: "Criterio 2.1",
+                criterioText: "Identificar el movimiento de rotación de la Tierra y sus efectos inmediatos (sucesión del día y la noche).",
+                saber: "CON.2.A.2",
+                saberText: "Movimiento de rotación y su relación con el tiempo y los ritmos diarios.",
+                questions: [
+                    {
+                        instruction: "¿Cómo se llama el movimiento en el que la Tierra gira sobre **SÍ MISMA** como una peonza?",
+                        options: [
+                            { name: "Rotación", icon: "🔄", correct: true, desc: "¡Exacto! La Rotación es el giro sobre su propio eje." },
+                            { name: "Traslación", icon: "🌌", correct: false, desc: "Traslación es el viaje largo alrededor del Sol." },
+                            { name: "Salto Espacial", icon: "🚀", correct: false, desc: "Eso es un viaje de cohete." }
+                        ]
+                    },
+                    {
+                        instruction: "¿Cuánto tiempo tarda la Tierra en dar **UNA VUELTA COMPLETA** sobre sí misma?",
+                        options: [
+                            { name: "1 Año", icon: "📅", correct: false, desc: "Un año es lo que tarda alrededor del Sol." },
+                            { name: "1 Día (24 Horas)", icon: "⏰", correct: true, desc: "¡Muy bien! Tarda 24 horas (un día entero)." },
+                            { name: "1 Hora", icon: "⏱️", correct: false, desc: "Una hora es demasiado rápido." }
+                        ]
+                    },
+                    {
+                        instruction: "Cuando la cara de la Tierra mira directamente hacia el Sol, ¿qué es en esa zona?",
+                        options: [
+                            { name: "De Noche", icon: "🌌", correct: false, desc: "La noche ocurre en la cara que queda a oscuras." },
+                            { name: "De Día", icon: "☀️", correct: true, desc: "¡Correcto! Recibe luz directa, así que es de DÍA." },
+                            { name: "Invierno", icon: "❄️", correct: false, desc: "El invierno depende de las estaciones." }
+                        ]
+                    },
+                    {
+                        instruction: "Cuando la cara de la Tierra queda escondida del Sol, ¿qué ocurre?",
+                        options: [
+                            { name: "Es de Noche", icon: "🌙", correct: true, desc: "¡Bien pensado! Al no recibir luz solar, es de NOCHE." },
+                            { name: "Es Mediodía", icon: "🌤️", correct: false, desc: "Al mediodía el Sol está en lo alto." },
+                            { name: "Se apaga el Sol", icon: "🛑", correct: false, desc: "El Sol nunca se apaga." }
+                        ]
+                    },
+                    {
+                        instruction: "El movimiento de **ROTACIÓN** provoca la alternancia de...",
+                        options: [
+                            { name: "Las 4 Estaciones", icon: "🌸🍂", correct: false, desc: "Las estaciones se deben a la traslación." },
+                            { name: "El Día y la Noche", icon: "☀️🌙", correct: true, desc: "¡Genial! El giro continuo crea el día y la noche." },
+                            { name: "La Lluvia y la Nieve", icon: "🌧️", correct: false, desc: "Eso son fenómenos del clima." }
+                        ]
+                    },
+                    {
+                        instruction: "¿Qué actividad hacemos habitualmente cuando nuestra zona de la Tierra está de **NOCHE**?",
+                        options: [
+                            { name: "Ir al colegio", icon: "🏫", correct: false, desc: "Al colegio vamos durante el día." },
+                            { name: "Dormir y descansar", icon: "😴", correct: true, desc: "¡Eso es! La noche es para descansar." },
+                            { name: "Jugar al sol en la playa", icon: "🏖️", correct: false, desc: "Necesitamos luz solar para la playa." }
+                        ]
+                    },
+                    {
+                        instruction: "Si en España es de día, ¿qué ocurre en el lado opuesto del planeta?",
+                        options: [
+                            { name: "También es de día", icon: "☀️", correct: false, desc: "El Sol solo puede iluminar la mitad del planeta a la vez." },
+                            { name: "Es de noche", icon: "🌌", correct: true, desc: "¡Perfecto! La otra mitad está a la sombra." },
+                            { name: "Está lloviendo", icon: "🌧️", correct: false, desc: "El clima puede ser diferente." }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 3,
+                title: "3. Traslación: 4 Estaciones",
+                ce: "Competencia Específica 2",
+                criterio: "Criterio 2.2",
+                criterioText: "Explicar el movimiento de traslación de la Tierra alrededor del Sol y su asociación con las cuatro estaciones.",
+                saber: "CON.2.A.3",
+                saberText: "Movimiento de traslación y ciclos estacionales.",
+                questions: [
+                    {
+                        instruction: "¿Cómo se llama el viaje que hace la Tierra **ALREDEDOR DEL SOL**?",
+                        options: [
+                            { name: "Traslación", icon: "🌌", correct: true, desc: "¡Correcto! Se traslada siguiendo una órbita solar." },
+                            { name: "Rotación", icon: "🔄", correct: false, desc: "Rotación es el giro sobre sí misma." },
+                            { name: "Vuelo Estelar", icon: "✈️", correct: false, desc: "Ese no es un concepto astronómico." }
+                        ]
+                    },
+                    {
+                        instruction: "¿Cuánto tarda la Tierra en dar la vuelta **COMPLETA** alrededor del Sol?",
+                        options: [
+                            { name: "1 Día", icon: "⏰", correct: false, desc: "Un día es solo la rotación." },
+                            { name: "1 Año (365 días)", icon: "📅", correct: true, desc: "¡Excelente! Tarda 365 días, que es 1 año." },
+                            { name: "1 Mes", icon: "📆", correct: false, desc: "Un mes es el tiempo de la Luna alrededor de la Tierra." }
+                        ]
+                    },
+                    {
+                        instruction: "¿Qué estación del año hace mucho **CALOR** y vamos a la playa?",
+                        options: [
+                            { name: "Invierno", icon: "❄️", correct: false, desc: "En invierno hace frío." },
+                            { name: "Verano", icon: "☀️", correct: true, desc: "¡Muy bien! En Verano los días son muy calurosos." },
+                            { name: "Otoño", icon: "🍂", correct: false, desc: "En otoño caen las hojas." }
+                        ]
+                    },
+                    {
+                        instruction: "¿En qué estación cae la **NIEVE** y hace frío?",
+                        options: [
+                            { name: "Invierno", icon: "❄️", correct: true, desc: "¡Correcto! El Invierno es la estación más fría." },
+                            { name: "Verano", icon: "🏖️", correct: false, desc: "En verano no suele nevar." },
+                            { name: "Primavera", icon: "🌸", correct: false, desc: "En primavera florecen las plantas." }
+                        ]
+                    },
+                    {
+                        instruction: "¿En qué estación nacen las **FLORES** y regresan las golondrinas?",
+                        options: [
+                            { name: "Otoño", icon: "🍁", correct: false, desc: "En otoño los árboles pierden sus hojas." },
+                            { name: "Primavera", icon: "🌸", correct: true, desc: "¡Estupendo! La Primavera llena el campo de flores." },
+                            { name: "Invierno", icon: "☃️", correct: false, desc: "El invierno es muy frío." }
+                        ]
+                    },
+                    {
+                        instruction: "¿En qué estación caen las **HOJAS SECAS** de los árboles?",
+                        options: [
+                            { name: "Otoño", icon: "🍂", correct: true, desc: "¡Perfecto! En Otoño el paisaje se vuelve marrón y amarillo." },
+                            { name: "Verano", icon: "🌊", correct: false, desc: "En verano las hojas están verdes." },
+                            { name: "Primavera", icon: "🌷", correct: false, desc: "En primavera crecen hojas nuevas." }
+                        ]
+                    },
+                    {
+                        instruction: "¿Cuántas **ESTACIONES** tiene un año en total?",
+                        options: [
+                            { name: "2 Estaciones", icon: "✌️", correct: false, desc: "Son más de dos." },
+                            { name: "4 Estaciones", icon: "4️⃣", correct: true, desc: "¡Genial! Son 4: Primavera, Verano, Otoño e Invierno." },
+                            { name: "12 Estaciones", icon: "🔢", correct: false, desc: "12 son los meses del año." }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 4,
+                title: "4. Sistema Solar y Planetas",
+                ce: "Competencia Específica 1",
+                criterio: "Criterio 1.1 / 1.2",
+                criterioText: "Identificar, nombrar y clasificar los principales planetas del Sistema Solar según sus características.",
+                saber: "CON.2.A.1",
+                saberText: "El Sistema Solar: componentes principales y organización.",
+                questions: [
+                    {
+                        instruction: "¿Cuál es el planeta más **CERCANO** al Sol?",
+                        options: [
+                            { name: "Mercurio", icon: "🪨", correct: true, desc: "¡Excelente! Mercurio es el primer planeta en orden." },
+                            { name: "Júpiter", icon: "🪐", correct: false, desc: "Júpiter está mucho más lejos." },
+                            { name: "Neptuno", icon: "🔵", correct: false, desc: "Neptuno es el más lejano." }
+                        ]
+                    },
+                    {
+                        instruction: "¿Qué planeta es conocido como el **PLANETA ROJO**?",
+                        options: [
+                            { name: "La Tierra", icon: "🌍", correct: false, desc: "La Tierra es el planeta azul." },
+                            { name: "Marte", icon: "🔴", correct: true, desc: "¡Genial! Marte tiene polvo rojizo en su superficie." },
+                            { name: "Venus", icon: "🟡", correct: false, desc: "Venus es de color amarillento." }
+                        ]
+                    },
+                    {
+                        instruction: "¿Cuál es el planeta **MÁS GIGANTE** de todo el Sistema Solar?",
+                        options: [
+                            { name: "Júpiter", icon: "🪐", correct: true, desc: "¡Correcto! Júpiter es el planeta gigante gaseoso." },
+                            { name: "Mercurio", icon: "🪨", correct: false, desc: "Mercurio es muy pequeño." },
+                            { name: "La Tierra", icon: "🌍", correct: false, desc: "La Tierra es mediana." }
+                        ]
+                    },
+                    {
+                        instruction: "¿Qué planeta es famoso por sus espectaculares **ANILLOS** brillantes?",
+                        options: [
+                            { name: "Saturno", icon: "🪐", correct: true, desc: "¡Muy bien! Saturno tiene grandes anillos de hielo y roca." },
+                            { name: "Marte", icon: "🔴", correct: false, desc: "Marte no tiene grandes anillos visibles." },
+                            { name: "Mercurio", icon: "🪨", correct: false, desc: "Mercurio es rocoso sin anillos." }
+                        ]
+                    },
+                    {
+                        instruction: "¿En qué **LUGAR** de distancia al Sol está nuestro planeta Tierra?",
+                        options: [
+                            { name: "1º Lugar", icon: "1️⃣", correct: false, desc: "El 1º es Mercurio." },
+                            { name: "3º Lugar", icon: "3️⃣", correct: true, desc: "¡Perfecto! Mercurio (1º), Venus (2º), Tierra (3º)." },
+                            { name: "8º Lugar", icon: "8️⃣", correct: false, desc: "El 8º es Neptuno." }
+                        ]
+                    },
+                    {
+                        instruction: "¿Qué planeta helado es el **MÁS LEJANO** del Sol?",
+                        options: [
+                            { name: "Neptuno", icon: "🥶", correct: true, desc: "¡Bien! Neptuno es el 8º planeta, helado y azul." },
+                            { name: "Venus", icon: "🌤️", correct: false, desc: "Venus está muy cerca del Sol." },
+                            { name: "Marte", icon: "🔴", correct: false, desc: "Marte es el 4º planeta." }
+                        ]
+                    },
+                    {
+                        instruction: "¿Dónde se encuentran todos estos planetas girando alrededor del Sol?",
+                        options: [
+                            { name: "En el Sistema Solar", icon: "🌌", correct: true, desc: "¡Fantástico! Forman nuestro Sistema Solar." },
+                            { name: "En el fondo del mar", icon: "🌊", correct: false, desc: "En el mar están los peces." },
+                            { name: "Dentro de una nube", icon: "☁️", correct: false, desc: "Las nubes están solo en la Tierra." }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 5,
+                title: "5. Taller Plastilina 3D",
+                ce: "Competencia Específica 6",
+                criterio: "Criterio 6.1",
+                criterioText: "Elaborar representaciones tridimensionales (maquetas de plastilina) del sistema Sol-Tierra-Luna siguiendo pautas guiadas.",
+                saber: "CON.2.A.4",
+                saberText: "Modelización manipulativa y representación del espacio cercano y astronómico.",
+                questions: [
+                    {
+                        instruction: "Paso 1: Elige el color adecuado para moldear el **SOL** gigante:",
+                        options: [
+                            { name: "Plastilina Amarilla / Naranja", icon: "🟡", correct: true, desc: "¡Excelente! El Sol lo moldeamos con amarillo o naranja." },
+                            { name: "Plastilina Negra", icon: "🖤", correct: false, desc: "El Sol es brillante, no negro." },
+                            { name: "Plastilina Verde", icon: "🟢", correct: false, desc: "Verde es para los continentes." }
+                        ]
+                    },
+                    {
+                        instruction: "Paso 2: ¿De qué **TAMAÑO** debes hacer la bola del Sol comparada con los demás?",
+                        options: [
+                            { name: "La bola más GRANDE", icon: "🟠", correct: true, desc: "¡Correcto! El Sol es el astro de mayor tamaño." },
+                            { name: "Una bola diminuta", icon: "🔹", correct: false, desc: "El Sol debe ser el más grande de la maqueta." },
+                            { name: "Igual que la Luna", icon: "⚪", correct: false, desc: "La Luna es mucho más pequeña." }
+                        ]
+                    },
+                    {
+                        instruction: "Paso 3: Para hacer la **TIERRA**, ¿qué colores de plastilina combinamos?",
+                        options: [
+                            { name: "Azul (agua) y Verde (tierra)", icon: "🔵🟢", correct: true, desc: "¡Perfecto! Azul para el océano y verde para los continentes." },
+                            { name: "Rojo y Negro", icon: "🔴⚫", correct: false, desc: "La Tierra es el planeta azul." },
+                            { name: "Solo Rosa", icon: "🩷", correct: false, desc: "Necesitamos azul para los mares." }
+                        ]
+                    },
+                    {
+                        instruction: "Paso 4: ¿De qué tamaño hacemos la bola de plastilina para la **TIERRA**?",
+                        options: [
+                            { name: "Tamaño MEDIANO", icon: "🌍", correct: true, desc: "¡Bien hecho! Es más pequeña que el Sol pero mayor que la Luna." },
+                            { name: "Gigante como el Sol", icon: "☀️", correct: false, desc: "El Sol es mucho mayor." },
+                            { name: "Microscópica", icon: "📍", correct: false, desc: "Debe poder manipularse bien con las manos." }
+                        ]
+                    },
+                    {
+                        instruction: "Paso 5: ¿De qué color moldeamos la bola de plastilina para la **LUNA**?",
+                        options: [
+                            { name: "Gris o Blanca", icon: "⚪", correct: true, desc: "¡Genial! La Luna es de color gris o blanco rocoso." },
+                            { name: "Azul marino", icon: "🔵", correct: false, desc: "La Luna no tiene mares de agua azul." },
+                            { name: "Amarillo chillón", icon: "🟡", correct: false, desc: "Gris o blanco refleja mejor la roca lunar." }
+                        ]
+                    },
+                    {
+                        instruction: "Paso 6: ¿Dónde colocamos la pequeña **LUNA** en nuestra maqueta?",
+                        options: [
+                            { name: "Girando cerca de la Tierra", icon: "🌍🌙", correct: true, desc: "¡Muy bien! La Luna debe estar orbitando al lado de la Tierra." },
+                            { name: "Pegada al centro del Sol", icon: "☀️", correct: false, desc: "Se quemaría cerca del Sol." },
+                            { name: "En otra habitación", icon: "🚪", correct: false, desc: "Forma parte del modelo de la Tierra." }
+                        ]
+                    },
+                    {
+                        instruction: "Paso 7: Por último, une los astros con palillos para mostrar la **ROTACIÓN Y TRASLACIÓN**.",
+                        options: [
+                            { name: "¡Maqueta 3D Lista!", icon: "🎨🏆", correct: true, desc: "¡Enhorabuena! Has completado el proyecto manipulativo DUA." },
+                            { name: "Desmontar todo", icon: "❌", correct: false, desc: "¡No lo desmontes, enséñaselo a tu maestro/a!" }
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        function selectAvatar(icon, name) {
+            state.avatar = icon;
+            state.avatarName = name;
+            
+            document.querySelectorAll('.avatar-card').forEach(btn => {
+                btn.classList.remove('border-cyan-400', 'bg-cyan-950/80');
+                btn.classList.add('border-slate-700');
+            });
+            event.currentTarget.classList.remove('border-slate-700');
+            event.currentTarget.classList.add('border-cyan-400', 'bg-cyan-950/80');
+
+            document.getElementById('selectedAvatarAlert').classList.remove('hidden');
+            document.getElementById('avatarNameDisplay').innerText = `${name} ${icon}`;
+
+            const startBtn = document.getElementById('startBtn');
+            startBtn.disabled = false;
+            startBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+
+            speakText(`Has seleccionado a ${name}. Presiona el botón para iniciar la misión.`);
+        }
+
+        function startMission() {
+            document.getElementById('welcomeSection').classList.add('hidden');
+            document.getElementById('gameDashboard').classList.remove('hidden');
+            
+            document.getElementById('currentAvatarDisplay').innerText = state.avatar;
+            document.getElementById('playerNameDisplay').innerText = state.avatarName;
+
+            speakText("¡Aventura iniciada! Tienes 5 misiones espaciales con 7 actividades cada una.");
+            updateProgressUI();
+        }
+
+        function toggleDyslexiaFont() {
+            state.dyslexiaMode = !state.dyslexiaMode;
+            const btn = document.getElementById('btnFont');
+            if (state.dyslexiaMode) {
+                document.body.classList.add('dyslexic-font');
+                btn.classList.add('bg-cyan-600', 'text-white');
+                speakText("Fuente adaptada activada.");
+            } else {
+                document.body.classList.remove('dyslexic-font');
+                btn.classList.remove('bg-cyan-600', 'text-white');
+                speakText("Fuente normal activada.");
+            }
+        }
+
+        function toggleAudioReader() {
+            state.audioEnabled = !state.audioEnabled;
+            const statusText = document.getElementById('audioStatusText');
+            const icon = document.getElementById('audioIcon');
+            const btn = document.getElementById('btnAudio');
+
+            if (state.audioEnabled) {
+                statusText.innerText = "Voz: Activada";
+                icon.className = "fa-solid fa-volume-high text-base";
+                btn.classList.replace('bg-slate-700', 'bg-indigo-600');
+                speakText("Lectura por voz activada.");
+            } else {
+                window.speechSynthesis.cancel();
+                statusText.innerText = "Voz: Desactivada";
+                icon.className = "fa-solid fa-volume-xmark text-base";
+                btn.classList.replace('bg-indigo-600', 'bg-slate-700');
+            }
+        }
+
+        function speakText(text) {
+            if (!state.audioEnabled) return;
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const cleanText = text.replace(/\*/g, '');
+                const utterance = new SpeechSynthesisUtterance(cleanText);
+                utterance.lang = 'es-ES';
+                utterance.rate = 0.88; // Optimized speed for learning difficulties
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function speakCurrentInstruction() {
+            const mission = curriculumMissions.find(m => m.id === state.activeMissionId);
+            if (mission) {
+                const question = mission.questions[state.currentQuestionIdx];
+                speakText(question.instruction);
+            }
+        }
+
+        function openMission(id) {
+            state.activeMissionId = id;
+            state.currentQuestionIdx = 0; // Reset to 1st question in bank of 7
+            renderCurrentQuestion();
+            document.getElementById('gameModal').classList.remove('hidden');
+        }
+
+        function renderCurrentQuestion() {
+            const mission = curriculumMissions.find(m => m.id === state.activeMissionId);
+            const question = mission.questions[state.currentQuestionIdx];
+
+            document.getElementById('modalMissionIcon').innerText = idToIcon(mission.id);
+            document.getElementById('modalMissionTag').innerText = `${mission.ce} • ${mission.criterio}`;
+            document.getElementById('modalMissionTitle').innerText = `${mission.title}`;
+            
+            document.getElementById('questionProgressText').innerText = `Reto ${state.currentQuestionIdx + 1} de 7`;
+            const qPercent = ((state.currentQuestionIdx + 1) / 7) * 100;
+            document.getElementById('modalQuestionBar').style.width = `${qPercent}%`;
+
+            document.getElementById('modalInstructionText').innerText = question.instruction.replace(/\*\*/g, '');
+
+            const contentDiv = document.getElementById('modalMissionContent');
+            contentDiv.innerHTML = '';
+            document.getElementById('modalFeedback').classList.add('hidden');
+            document.getElementById('nextQuestionBtn').classList.add('hidden');
+
+            const grid = document.createElement('div');
+            grid.className = 'grid grid-cols-1 gap-3';
+
+            question.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'flex items-center space-x-4 p-4 rounded-2xl bg-slate-800/90 hover:bg-slate-700 border-2 border-slate-700 hover:border-cyan-400 transition text-left group';
+                btn.innerHTML = `
+                    <span class="text-4xl p-3 bg-slate-900 rounded-xl border border-slate-700 group-hover:scale-110 transition shrink-0">${opt.icon}</span>
+                    <div class="flex-1">
+                        <div class="font-bold text-white text-sm md:text-base">${opt.name}</div>
+                        <div class="text-xs text-slate-300 mt-0.5">${opt.desc}</div>
+                    </div>
+                `;
+                btn.onclick = () => checkQuestionAnswer(idx);
+                grid.appendChild(btn);
+            });
+
+            contentDiv.appendChild(grid);
+            speakCurrentInstruction();
+        }
+
+        function checkQuestionAnswer(optionIdx) {
+            const mission = curriculumMissions.find(m => m.id === state.activeMissionId);
+            const question = mission.questions[state.currentQuestionIdx];
+            const selectedOpt = question.options[optionIdx];
+            const feedbackDiv = document.getElementById('modalFeedback');
+            
+            feedbackDiv.classList.remove('hidden');
+
+            if (selectedOpt.correct) {
+                feedbackDiv.className = 'mt-4 p-4 rounded-2xl text-xs md:text-sm font-bold flex items-center space-x-3 bg-emerald-950/90 border-2 border-emerald-500 text-emerald-200';
+                feedbackDiv.innerHTML = `<i class="fa-solid fa-circle-check text-2xl text-emerald-400 shrink-0"></i><div><strong>¡Respuesta Correcta!</strong> ${selectedOpt.desc}</div>`;
+                speakText(`¡Muy bien! ${selectedOpt.desc}`);
+
+                // Record success score
+                const currentScore = state.missionScores[state.activeMissionId - 1];
+                if (state.currentQuestionIdx + 1 > currentScore) {
+                    state.missionScores[state.activeMissionId - 1] = state.currentQuestionIdx + 1;
+                }
+
+                document.getElementById('nextQuestionBtn').classList.remove('hidden');
+            } else {
+                feedbackDiv.className = 'mt-4 p-4 rounded-2xl text-xs md:text-sm font-bold flex items-center space-x-3 bg-amber-950/90 border-2 border-amber-500 text-amber-200';
+                feedbackDiv.innerHTML = `<i class="fa-solid fa-lightbulb text-2xl text-amber-400 shrink-0"></i><div><strong>Pista adaptada DUA:</strong> ${selectedOpt.desc} ¡Inténtalo de nuevo!</div>`;
+                speakText(`Pista: ${selectedOpt.desc}. Inténtalo otra vez.`);
+            }
+        }
+
+        function nextQuestionInMission() {
+            if (state.currentQuestionIdx < 6) {
+                state.currentQuestionIdx++;
+                renderCurrentQuestion();
+            } else {
+                // Completed all 7 questions in this mission
+                closeMissionModal();
+                updateProgressUI();
+                speakText(`¡Enhorabuena! Has completado los 7 retos de esta sección.`);
+            }
+        }
+
+        function idToIcon(id) {
+            return id === 1 ? '☀️' : id === 2 ? '🔄' : id === 3 ? '🌸' : id === 4 ? '🪐' : '🎨';
+        }
+
+        function closeMissionModal() {
+            document.getElementById('gameModal').classList.add('hidden');
+            window.speechSynthesis.cancel();
+        }
+
+        function updateProgressUI() {
+            const totalScore = state.missionScores.reduce((a, b) => a + b, 0);
+            document.getElementById('progressText').innerText = `${totalScore} / 35 Completadas`;
+            
+            // Total stars = number of completed missions
+            const completedMissions = state.missionScores.filter(s => s === 7).length;
+            document.getElementById('starsCount').innerText = completedMissions;
+
+            const percentage = (totalScore / 35) * 100;
+            document.getElementById('progressBar').style.width = `${percentage}%`;
+
+            for (let i = 1; i <= 5; i++) {
+                const statusSpan = document.getElementById(`statusM${i}`);
+                const score = state.missionScores[i - 1];
+                if (score === 7) {
+                    statusSpan.className = 'text-xs font-bold text-emerald-400 bg-emerald-400/10 px-2.5 py-1 rounded-lg border border-emerald-500/30';
+                    statusSpan.innerHTML = '<i class="fa-solid fa-check"></i> 7/7 Superado';
+                } else {
+                    statusSpan.className = 'text-xs font-bold text-amber-400 bg-amber-400/10 px-2.5 py-1 rounded-lg border border-amber-500/30';
+                    statusSpan.innerHTML = `<i class="fa-solid fa-clock"></i> ${score}/7 Retos`;
+                }
+            }
+
+            if (totalScore === 35) {
+                document.getElementById('finalBanner').classList.remove('hidden');
+            }
+        }
+
+        function openTeacherModal() {
+            const totalScore = state.missionScores.reduce((a, b) => a + b, 0);
+
+            document.getElementById('reportStudentName').innerText = `${state.avatarName} ${state.avatar}`;
+            document.getElementById('reportScore').innerText = `${totalScore} / 35 Actividades (${Math.round((totalScore / 35) * 100)}%)`;
+
+            const tbody = document.getElementById('reportTableBody');
+            tbody.innerHTML = '';
+
+            curriculumMissions.forEach((m, idx) => {
+                const score = state.missionScores[idx];
+                const percent = Math.round((score / 7) * 100);
+                const isPassed = score >= 5; // Minimum required for adapted level (5/7)
+
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-800/50 transition";
+                tr.innerHTML = `
+                    <td class="p-3">
+                        <div class="font-bold text-white">${m.title}</div>
+                        <div class="text-slate-400 text-[11px]">${m.ce} • ${m.criterio}</div>
+                    </td>
+                    <td class="p-3 text-slate-300">
+                        <strong class="text-cyan-300">${m.saber}:</strong> ${m.saberText}
+                    </td>
+                    <td class="p-3 text-center font-bold text-white">${score} / 7</td>
+                    <td class="p-3 text-center font-bold text-cyan-300">${percent}%</td>
+                    <td class="p-3 text-center">
+                        ${isPassed 
+                            ? '<span class="bg-emerald-500/20 text-emerald-300 px-2.5 py-1 rounded-lg font-bold text-xs border border-emerald-500/40 inline-block"><i class="fa-solid fa-check"></i> Superado</span>' 
+                            : '<span class="bg-amber-500/20 text-amber-300 px-2.5 py-1 rounded-lg font-bold text-xs border border-amber-500/40 inline-block"><i class="fa-solid fa-clock"></i> En Proceso</span>'}
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            const conclusionDiv = document.getElementById('pedagogicalConclusion');
+            if (totalScore >= 25) {
+                conclusionDiv.className = 'bg-emerald-950/70 p-4 rounded-2xl border border-emerald-500/50 text-xs md:text-sm leading-relaxed text-emerald-200';
+                conclusionDiv.innerHTML = `
+                    <h4 class="font-black text-white text-base mb-1 flex items-center"><i class="fa-solid fa-circle-check text-emerald-400 mr-2 text-lg"></i> DICTAMEN DUA: MÍNIMOS CURRICULARES ALCANZADOS</h4>
+                    <p>El/La alumno/a ha alcanzado un <strong>${Math.round((totalScore / 35) * 100)}% de logro global</strong>, acreditando la consecución de los mínimos adaptados exigidos en la <strong>Orden de 30 de mayo de 2023 (Andalucía)</strong> para 4º EP. El diseño DUA (asistencia por voz sintética, alto contraste visual e iconografía accesible) ha permitido salvar las barreras del desfase lectoescritor superior a dos cursos.</p>
+                `;
+            } else {
+                conclusionDiv.className = 'bg-amber-950/70 p-4 rounded-2xl border border-amber-500/50 text-xs md:text-sm leading-relaxed text-amber-200';
+                conclusionDiv.innerHTML = `
+                    <h4 class="font-black text-white text-base mb-1 flex items-center"><i class="fa-solid fa-triangle-exclamation text-amber-400 mr-2 text-lg"></i> DICTAMEN DUA: PROCESO EN CONSOLIDACIÓN</h4>
+                    <p>El/La alumno/a cuenta con un <strong>${Math.round((totalScore / 35) * 100)}% de consecución</strong> de los objetivos. Se aconseja continuar reforzando las misiones pendientes con las medidas DUA de lectura por voz y soporte táctil manipulativo para afianzar los saberes básicos astronómicos.</p>
+                `;
+            }
+
+            document.getElementById('teacherModal').classList.remove('hidden');
+            speakText("Informe docente generado con el desglose de los 5 criterios normativos.");
+        }
+
+        function closeTeacherModal() {
+            document.getElementById('teacherModal').classList.add('hidden');
+        }
+
+        function resetProgress() {
+            state.missionScores = [0, 0, 0, 0, 0];
+            state.stars = 0;
+            updateProgressUI();
+            document.getElementById('finalBanner').classList.add('hidden');
+            closeTeacherModal();
+            speakText("Evaluación reiniciada por el docente.");
+        }
+    </script>
+</body>
+</html>
